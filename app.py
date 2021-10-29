@@ -1,12 +1,16 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 import datetime
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return datetime.datetime.now().ctime()
+#@app.route("/")
+#def index():
+
+@app.get("/")
+def home_page():
+   return render_template("home.html",
+   the_title="welcome!")
 
 
 @app.route("/hello")
@@ -14,19 +18,40 @@ def hello():
     return "hello bababooey"
 
 
-@app.get("/home")
-def home_page():
-    with open("home.html") as f:
-        html = f.read()
-        return html
+#@app.get("/home")
+#def home_page():
+ #  return render_template("home.html",
+ #  the_title="welcome!")
 
-        
+
 @app.get("/showform")
 def display_form():
-    with open("form.html") as f:
-        html = f.read()
-    return html
+    return render_template("form.html",
+    the_title="give us details")
 
+@app.get("/games")
+def games():
+    return render_template("games.html",
+    the_title="My Top 3 Favorite Games Ever")
+
+
+@app.get("/hades")
+def hades():
+    return render_template("hades.html",
+    the_title="Hades")
+
+
+@app.get("/aceattorney")
+def aceattorney():
+    return render_template("aceattorney.html",
+    the_title="Phoenix Wright Ace Attorney: Trials And Tribulations")
+
+
+@app.get("/zelda")
+def zelda():
+    return render_template("zelda.html",
+    the_title="The Legend Of Zelda: Majora's Mask")
+    
 
 @app.post("/processform")
 def process_form():
