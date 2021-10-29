@@ -35,6 +35,12 @@ def games():
     the_title="My Top 3 Favorite Games Ever")
 
 
+@app.get("/aboutme")
+def aboutme():
+    return render_template("aboutme.html",
+    the_title="information about this cool dude")
+
+
 @app.get("/hades")
 def hades():
     return render_template("hades.html",
@@ -51,7 +57,13 @@ def aceattorney():
 def zelda():
     return render_template("zelda.html",
     the_title="The Legend Of Zelda: Majora's Mask")
-    
+
+
+@app.get("/cv")
+def cv():
+    return render_template("cv.html",
+    the_title="CV")
+
 
 @app.post("/processform")
 def process_form():
