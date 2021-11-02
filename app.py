@@ -65,6 +65,12 @@ def cv():
     the_title="CV")
 
 
+@app.get("/other")
+def other():
+    return render_template("other.html",
+    the_title="Other Hobbies")
+    
+
 @app.post("/processform")
 def process_form():
     the_name = request.form["thename"]
